@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body onload="onInit()">
+
+    <h1 class="page-title">Welcome to the book shop</h1>
+    <!-- change name -->
+    <h4 class="eror-input"></h4>
+    <input class="input" type="text" name="book-name" placeholder="Enter book name" />
+    <input class="input" type="number" name="book-price" placeholder="Enter book price" />
+    <button onclick="onAddBook()">Create new book</button>
+    <button class="next-page-button" onclick="onNextPage()">Next Page</button>
+    <table class="books-table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td class="book-title" onclick="onSetSortBy('title')">Title</td>
+                <td class="book-price" onclick="onSetSortBy('price')">Price ₪</td>
+                <td colspan="3">action</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="read-modal">
+        <h3></h3>
+        <h4>Book summary</h4>
+        <img class="read-modal-img" src="" alt="">
+        <p></p>
+        Rate<input type="number" value="0" min="0" max="10" class="input-rate" onchange="onRateBook(event)">
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+    <div class="update-price-modal">
+        <h4>What is the new price?</h4>
+        <input class="update-price-input" type="number" min="0" name="update-price" placeholder="Enter new price" />
+        <button onclick="onCloseUpdatePriceModal()">Close</button>
+    </div>
+    <div class="user-msg"></div>
+
+    <script src="/js/service/book-utils-service.js"></script>
+    <script src="/js/service/book-storage-service.js"></script>
+    <script src="/js/service/book-service.js"></script>
+    <script src="/js/book-controller.js"></script>
+</body>
+
+</html>

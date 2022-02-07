@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fbf8f1;
+  overflow-x: hidden;
+}
+td {
+  background-color: #e0c097;
+  min-width: 30px;
+  height: 40px;
+  border-radius: 0.2em;
+  padding: 0.4em;
+}
+.page-title {
+  background-color: #96c7c1;
+  border-radius: 0.2em;
+  padding: 0.2em;
+}
+.user-msg {
+  position: fixed;
+  bottom: -100px;
+  right: 10px;
+  background-color: #79b4b7;
+  padding: 10px;
+  color: #f8f0df;
+  border-radius: 0.2em;
+}
+.user-msg.open {
+  bottom: 10px;
+  transition: bottom 0.5s;
+}
+
+.read-modal {
+  background-color: #79b4b775;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 150%;
+  min-width: 300px;
+  text-align: center;
+}
+
+.read-modal > p {
+  text-align: left;
+}
+.read-modal-img {
+  height: 200px;
+}
+
+.read-modal h3 {
+  color: #2b596d;
+  text-decoration: underline dotted;
+  text-transform: capitalize;
+  padding: 5px;
+}
+
+.read-modal.open {
+  left: 50%;
+  transition: left 0.5s;
+}
+
+button {
+  color: whitesmoke;
+  border: 0;
+  border-radius: 0.2em;
+  background-color: #222;
+  padding: 6px 10px;
+  margin: center;
+  cursor: pointer;
+}
+.read-button {
+  background-color: #6867ac;
+}
+.update-button {
+  background-color: #a267ac;
+}
+.delete-button {
+  background-color: #8ca1a5;
+}
+
+button:hover {
+  color: #ff9f45;
+}
+
+.input-rate {
+  width: 40px;
+  display: block;
+  margin: auto;
+}
+
+.book-title,
+.book-price:hover {
+  cursor: pointer;
+}
+.next-page-button {
+  display: block;
+}
+
+.update-price-modal {
+  width: 200px;
+  height: 120px;
+  margin: auto;
+  position: fixed;
+  left: 50%;
+  margin-left: -100px;
+  top: -150%;
+  background-color: #79b4b7;
+  padding: 10px;
+  color: #f8f0df;
+  border-radius: 0.3em;
+}
+
+.update-price-modal h4 {
+  margin: 10px;
+}
+
+.update-price-modal input {
+  margin-bottom: 15px;
+}
+
+.update-price-modal.open {
+  top: 50%;
+  transition: top 0.5s;
+}
