@@ -33,7 +33,7 @@ td {
 }
 
 .read-modal {
-  background-color: #79b4b775;
+  background-color: #79b4b790;
   padding: 10px;
   position: absolute;
   top: 0px;
@@ -42,7 +42,7 @@ td {
   text-align: center;
 }
 
-.read-modal > p {
+.read-modal {
   text-align: left;
 }
 .read-modal-img {
@@ -67,7 +67,6 @@ button {
   border-radius: 0.2em;
   background-color: #222;
   padding: 6px 10px;
-  margin: center;
   cursor: pointer;
 }
 .read-button {
@@ -123,4 +122,16 @@ button:hover {
 .update-price-modal.open {
   top: 50%;
   transition: top 0.5s;
+}
+
+.rate-price-p {
+  text-align: center;
+}
+.read-modal-close-button {
+display: block;
+margin: 5px auto;
+}
+
+.rtl {
+  direction: rtl;
 }

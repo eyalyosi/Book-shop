@@ -6,7 +6,9 @@ var gSelectedBookIdForUpdate
 var gLastSort
 
 function onInit() {
+
     renderBooks()
+    doTrans()
 }
 
 function onNextPage() {
@@ -39,9 +41,9 @@ function renderBooks() {
     <td>${book.id}</td>
     <td>${book.title}</td>
     <td>${book.price}</td>
-    <td><button class="read-button" onclick="onReadBook(${book.id})">Read</button></td>
-    <td><button class="update-button" onclick="onUpdateBook(${book.id})">Update</button></td>
-    <td><button class="delete-button" onclick="onRemoveBook(${book.id})">Delete</button></td>
+    <td><button class="read-button" onclick="onReadBook(${book.id})">${getTrans('action-read-button')}</button></td>
+    <td><button class="update-button" onclick="onUpdateBook(${book.id})">${getTrans('action-update-button')}</button></td>
+    <td><button class="delete-button" onclick="onRemoveBook(${book.id})">${getTrans('action-delete-button')}</button></td>
 </tr>`
     })
     document.querySelector('.books-table tbody').innerHTML = strHtml.join('')
@@ -60,10 +62,10 @@ function onAddBook() {
     if (newBookName && newBookPrice) {
         const book = addBook(newBookName, newBookPrice)
         renderBooks()
-        document.querySelector('.eror-input').innerText = ''
+        document.querySelector('.no-input-message').innerText = ''
         flashMsg(`Book Added (id: ${book.id})`)
     } else {
-        document.querySelector('.eror-input').innerText = 'You must insert book title and price'
+        document.querySelector('.no-input-message').innerText = getTrans('no-input-message')
     }
 
 }
@@ -71,8 +73,9 @@ function onAddBook() {
 function onRemoveBook(bookId) {
     removeBook(bookId)
     renderBooks()
-    flashMsg(`book Deleted`)
+    flashMsg(`${getTrans('flash-msg-delete')}`)
 }
+
 
 function onRateBook(event) {
     updateBookRate(+event.target.id, +event.target.value)
@@ -95,6 +98,7 @@ function onUpdateBook(bookId) {
     gSelectedBookIdForUpdate = bookId
     var elModal = document.querySelector('.update-price-modal')
     elModal.classList.add('open')
+
 }
 
 function flashMsg(msg) {
@@ -114,15 +118,26 @@ function onCloseModal() {
 function onCloseUpdatePriceModal() {
 
     var newPrice = document.querySelector('input[name=update-price]').value
-    if (newPrice < 0) {
+    if (newPrice <= 0) {
         return
     }
     else {
         const book = updateBook(gSelectedBookIdForUpdate, newPrice)
         renderBooks()
-        flashMsg(`Price updated to: ${book.price}`)
+        flashMsg(`${getTrans('flash-msg-update')} ${book.price}`)
     }
-
+    
+    document.querySelector('input[name=update-price]').value = ''
     document.querySelector('.update-price-modal').classList.remove('open')
     gSelectedBookIdForUpdate = null
 }
+
+function onSetLang(lang) {
+    setLang(lang);
+    if (lang === 'he') document.body.classList.add('rtl') 
+    else document.body.classList.remove('rtl')
+    renderBooks();
+    
+}
+
+
